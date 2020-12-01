@@ -1,6 +1,9 @@
+/* 背景 */
 body{
     background: url(../images/memphis-colorful.png);
 }
+
+/* padding */
 
 .m-padded-mini{
     padding-left: 0.6em !important;
@@ -53,7 +56,6 @@ body{
     display: none;
 }
 
-
 .top-mark{
     padding: 1em 0em;
 }
@@ -78,6 +80,51 @@ body{
     margin-right: 0.8em !important;
 }
 
+/*-----container----*/
+.m-container-mini{
+    max-width: 100em !important;
+    margin: auto !important;
+}
+.m-container {
+    max-width: 72em !important;
+    margin: auto !important;
+}
+.m-container-tiny {
+    max-width: 65em !important;
+    margin: auto !important;
+}
+.m-container-small {
+    max-width: 60em !important;
+    margin: auto !important;
+}
+
+/*------position---*/
+
+.m-right-top {
+    position: absolute;
+    top:0;
+    right: 0;
+}
+.m-left-top {
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+/*-----opacity------*/
+.m-opacity {
+    opacity: 0.9 !important;
+}
+.m-opacity-mini {
+    opacity: 0.8 !important;
+}
+.m-opacity-tiny {
+    opacity: 0.6 !important;
+}
+.m-opacity-small {
+    opacity: 0.4 !important;
+}
+
 /* --------text-------- */
 
 .m-text-thin{
@@ -92,6 +139,52 @@ body{
 
 .m-opacity-mini{
     opacity: 0.8 !important;
+}
+
+.m-font-size-title-large{
+    font-size: 40px;
+    color: #ffffff;
+    font-family: STSong;
+}
+
+.m-font-size-title-mediul{
+    font-size: 30px;
+    color: #ffffff;
+    font-family: STSong;
+}
+
+.m-font-size-title{
+    font-size: 450%;
+    color: #ffffff;
+}
+
+.m-font-size-text{
+     font-size: 30px;
+     color: #ffffff;
+    /*font-family: STXihei;*/
+}
+
+.m-font-size-blog-text{
+    font-size: 18px;
+    color: #ffffff;
+    font-family: STSong;
+}
+
+.m-font-size-text-friends{
+    font-size: 16px;
+    color: #000000;
+    font-family: STSong;
+}
+
+.m-font-size-text-mini{
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.m-font-size-text-init-title{
+    font-size: 24px;
+    color: #fffffc;
+    align-content: center;
 }
 
 @media screen and (max-width : 768px){
