@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大家吼!~欢迎来到Shouko的主页</title>
+    <!--semantic-ui的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="./static/css/me.css">
+    <link rel="icon" href="./static/images/maomi.ico" type="images/x-ico" />
+</head>
+
+
+<body>
+
+    <!-- 隐藏菜单 -->
+    <div class="ui large top fixed hidden menu">
+        <div class="ui container">
+            <a rel="#" class="item"><i class="home icon"></i>主页</a>
+            <a rel="#" class="active item"><i class="book icon"></i>文章</a>
+            <a rel="#" class="item"><i class="archive icon"></i>资源</a>
+            <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
+            <a rel="#" class="item"><i class="info icon"></i>关于我</a>
+            <div class="right item">
+                <div class="ui icon small input">
+                    <input type="text" placeholder="搜索全站...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主菜单 -->
+    <div class="ui inverted m-padded-tb-mini attached vertical top-mark center aligned segment">
+        <div class="ui container">
+            <div class="ui inverted secondary borderless pointing menu">
+                <!-- <h2 class="uiattached teal header item">Shouko</h2> -->
+                <a rel="#" class="item"><i class="home icon"></i>主页</a>
+                <a rel="#" class="active item"><i class="book icon"></i>文章</a>
+                <a rel="#" class="item"><i class="archive icon"></i>资源</a>
+                <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
+                <a rel="#" class="item"><i class="info icon"></i>关于我</a>
+                <div class="right item">
+                    <div class="ui icon small input">
+                        <input type="text" placeholder="搜索全站...">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="m-container m-padded-tb-large">
+        <div class="ui container">
+            <div class="ui top attached segment">
+                <div class="ui mini horizontal link list">
+                    <div class="item">
+                        <img src="./static/images/down.jpg" alt="" class="ui avatar image">
+                        <div class="content"><a href="#" class="header">Shouko</a></div>
+                    </div>
+                    <div class="item">
+                        <i class="calendar icon"></i> 2020-11-5
+                    </div>
+                    <div class="item">
+                        <i class="eye icon"></i> 123
+                    </div>
+                </div>
+            </div>
+            <div class="ui attached segment">
+                <img src="./static/images/back.png" alt="" class="ui fluid rounded image">
+            </div>
+            <div class="ui attached segment">
+                <div class="ui basic right aligned segment">
+                    <div class="ui orange basic label">原创</div>
+                </div>
+
+                <h2 class="ui center aligned header">MySQL的事务</h2>
+
+                <!-- 正文 -->
+                <div class="content">
+
+                </div>
+
+                <!-- 标签 -->
+                <div>
+                    <div class="ui pink label m-text-thin">数据库</div>
+                </div>
+
+
+            </div>
+            <div class="ui bottom attached segment">
+                <div class="ui comments m-padded-lr-small">
+                    <h3 class="ui dividing header m-padded-tb-tiny">留言板</h3>
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="https://picsum.photos/id/1005/400/400">
+                        </a>
+                        <div class="content">
+                            <a class="author">Matt</a>
+                            <div class="metadata">
+                                <span class="date">今天下午 5:42</span>
+                            </div>
+                            <div class="text">太赞了！ </div>
+                            <div class="actions">
+                                <a class="reply">回复</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="https://picsum.photos/id/1005/400/400">
+                        </a>
+                        <div class="content">
+                            <a class="author">Elliot Fu</a>
+                            <div class="metadata">
+                                <span class="date">昨天上午12:30</span>
+                            </div>
+                            <div class="text">
+                                <p>這對我的研究是非常有用.謝謝!</p>
+                            </div>
+                            <div class="actions">
+                                <a class="reply">回复</a>
+                            </div>
+                        </div>
+                        <div class="comments">
+                            <div class="comment">
+                                <a class="avatar">
+                                    <img src="https://picsum.photos/id/1005/400/400">
+                                </a>
+                                <div class="content">
+                                    <a class="author">Jenny Hess</a>
+                                    <div class="metadata">
+                                        <span class="date">刚刚</span>
+                                    </div>
+                                    <div class="text">艾略特你永远是多么正确 :) </div>
+                                    <div class="actions">
+                                        <a class="reply">回复</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <a class="avatar">
+                            <img src="https://picsum.photos/id/1005/400/400">
+                        </a>
+                        <div class="content">
+                            <a class="author">Joe Henderson</a>
+                            <div class="metadata">
+                                <span class="date">5 天以前</span>
+                            </div>
+                            <div class="text">老兄，这太棒了。非常感谢。 </div>
+                            <div class="actions">
+                                <a class="reply">回复</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui form m-padded-lr-small">
+                    <div class="field">
+                        <textarea name="content" placeholder="请输入评论信息"></textarea>
+                    </div>
+                    <div class="fields">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" name="nickname" placeholder="请输入昵称">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <button class="ui teal button"><i class="edit icon"></i>发布</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="ui inverted vertical footer segment m-padded-tb-big">
+        <div class="ui center aligned container">
+            <h4 class="ui inverted header">关于本站</h4>
+            <p>这里是Shouko的个人网站</p>
+            <div class="ui inverted divider"></div>
+            <p>copyright © 2020-2021 — All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <!--引入semantic-ui的库-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script>
+        $('.top-mark')
+            .visibility({
+                once: false,
+                onBottomPassed: function () {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function () {
+                    $('.fixed.menu').transition('fade out');
+                }
+            });
+    </script>
+</body>
+
+</html>
