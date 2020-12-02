@@ -1,0 +1,59 @@
+/* 这个css文件用于定义文本和字体 */
+
+/* 文本 */
+.m-text-thin{
+    font-weight: 450 !important;
+}
+.m-text-spaced{
+    letter-spacing: 1px !important;
+}
+.m-text-lined{
+    line-height: 1.8 !important;
+}
+
+/* 字体 */
+.m-font-size-title-large{
+    font-size: 40px;
+    color: #ffffff;
+    font-family: STSong;
+}
+
+.m-font-size-title-mediul{
+    font-size: 30px;
+    color: #ffffff;
+    font-family: STSong;
+}
+
+.m-font-size-title{
+    font-size: 450%;
+    color: #ffffff;
+}
+
+.m-font-size-text{
+     font-size: 30px;
+     color: #ffffff;
+    /*font-family: STXihei;*/
+}
+
+.m-font-size-blog-text{
+    font-size: 18px;
+    color: #ffffff;
+    font-family: STSong;
+}
+
+.m-font-size-text-friends{
+    font-size: 16px;
+    color: #000000;
+    font-family: STSong;
+}
+
+.m-font-size-text-mini{
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.m-font-size-text-init-title{
+    font-size: 24px;
+    color: #fffffc;
+    align-content: center;
+}

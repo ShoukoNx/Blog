@@ -1,0 +1,10 @@
+/* 这个css文件为通用设置,用于主页.文章页等 */
+
+@import "./blog-css/general-background.css";
+@import "./blog-css/m-container.css";
+@import "./blog-css/m-font-text.css";
+@import "./blog-css/m-margin.css";
+@import "./blog-css/m-mobileAdapt.css";
+@import "./blog-css/m-opacity.css";
+@import "./blog-css/m-padded.css";
+@import "./blog-css/etc.css";

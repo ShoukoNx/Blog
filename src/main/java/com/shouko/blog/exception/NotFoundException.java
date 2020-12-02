@@ -6,22 +6,22 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  * @Author ：ShoukoNx
  * @Date ：Created in 2020/12/1 21:14
- * @Description：未知异常
+ * @Description： 未知异常
  * @Version: 1.0
  */
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
 
-public class UnknownException extends RuntimeException {
+public class NotFoundException extends RuntimeException {
 
-    public UnknownException(){
+    public NotFoundException(){
         super();
     }
 
-    public UnknownException(String message){
+    public NotFoundException(String message){
         super(message);
     }
-    public UnknownException(String message, Throwable cause){
+    public NotFoundException(String message, Throwable cause){
         super(message, cause);
     }
 

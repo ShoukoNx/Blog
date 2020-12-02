@@ -1,0 +1,28 @@
+/* 这个css文件用于一些杂项的设置 */
+
+/* 设置可隐藏菜单栏 */
+.hidden.menu {
+    display: none;
+}
+
+.top-mark{
+    padding: 1em 0em;
+}
+
+
+/*------position---*/
+
+.m-right-top {
+    position: absolute;
+    top:0;
+    right: 0;
+}
+.m-left-top {
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
+
+
+
