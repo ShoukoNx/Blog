@@ -1,4 +1,8 @@
 /* 通用背景 */
 body{
-    background: url(../../images/memphis-colorful.png);
+    background: url(../../images/753621.png);
+    background-size:100%;
+    background-attachment:fixed;
+    height: 100%;
+    width: 100%;
 }
