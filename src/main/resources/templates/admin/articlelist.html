@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章列表</title>
     <!--semantic-ui的css-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
-    <link rel="stylesheet" href="../../static/css/general.css"> 
+    <link rel="stylesheet" href="../../static/css/general.css">
     <link rel="icon" href="../../static/images/icon.ico" type="images/x-ico" />
 </head>
 
@@ -24,7 +25,8 @@
                 <div class="right m-mobile-hide menu">
                     <div class="ui dropdown item">
                         <div class="text">
-                            <img class="ui avatar image" src="../../static/images/down.jpg" th:src="@{${session.user.avatar}}">
+                            <img class="ui avatar image" src="../../static/images/down.jpg"
+                                th:src="@{${session.user.avatar}}">
                             <span th:text="${session.user.nickname}">Shouko</span>
                         </div>
                         <i class="dropdown icon"></i>
@@ -40,20 +42,119 @@
         </a>
     </nav>
 
-    
-    
-    <div class="m-padded-tb-large">
+
+
+    <div class="m-container-small m-padded-tb-large">
         <div class="ui right aligned container">
-            <button type="button" id="newArticle-btn" class="ui orange button">新的文章</button>
-            <button type="button" id="articleList-btn" class="ui red button">文章列表</button>
+            <button type="button" id="newArticle-btn" class="ui olive button">新的文章</button>
+            <button type="button" id="articleList-btn" class="ui brown button">文章列表</button>
         </div>
-        <br>    
+        <br>
 
         <div class="ui container">
-            <div class="ui segment">
-                
-            </div>
-            
+            <form action="#" method="POST" class="ui form">
+                <div class="inline fields">
+                    <div class="field">
+                        <input type="text" name="title" placeholder="标题">
+                    </div>
+                    <div class="field">
+                        <select name="type" class="ui search dropdown">
+                            <option value="Java">Java</option>
+                            <option value="Python">Python</option>
+                            <option value="DataBase">数据库</option>
+                            <option value="Computer">计算机基础</option>
+                            <option value="Algorithm">数据结构与算法</option>
+                            <option value="Research">科研</option>
+                            <option value="Other">杂谈</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <div class="ui check box">
+                            <input type="checkbox" id="recommend" name="title">
+                            <label for="recommend">推荐</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <button type="button" id="search-btn" class="ui primary button"><i
+                                class="search icon"></i>搜索</button>
+                    </div>
+                </div>
+            </form>
+
+            <table class="ui padded table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>标题</th>
+                        <th>类型</th>
+                        <th>推荐</th>
+                        <th>更新时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>MySQL的事务</td>
+                        <td>数据库</td>
+                        <td>是</td>
+                        <td>2020-12-8</td>
+                        <td>
+                            <a href="" class="ui mini teal button">编辑</a>
+                            <a href="" class="ui mini red button">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>MySQL的事务</td>
+                        <td>数据库</td>
+                        <td>是</td>
+                        <td>2020-12-8</td>
+                        <td>
+                            <a href="" class="ui mini teal button">编辑</a>
+                            <a href="" class="ui mini red button">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>MySQL的事务</td>
+                        <td>数据库</td>
+                        <td>是</td>
+                        <td>2020-12-8</td>
+                        <td>
+                            <a href="" class="ui mini teal button">编辑</a>
+                            <a href="" class="ui mini red button">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>MySQL的事务</td>
+                        <td>数据库</td>
+                        <td>是</td>
+                        <td>2020-12-8</td>
+                        <td>
+                            <a href="" class="ui mini teal button">编辑</a>
+                            <a href="" class="ui mini red button">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="6">
+                            <div class="ui right floated pagination menu">
+                                <a class="icon item">
+                                    <i class="left chevron icon"></i>
+                                </a>
+                                <a class="icon item">
+                                    <i class="right chevron icon"></i>
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+
         </div>
     </div>
 
@@ -65,24 +166,31 @@
 
 
 
-    
 
-    
+
+
 
 
     <footer class="ui inverted m-opacity-mini vertical footer segment m-padded-tb-big">
         <div class="ui center aligned container">
             <h4 class="ui inverted header m-opacity-mini">关于本站</h4>
-                    <p class="m-opacity-mini">这里是Shouko的个人网站</p>
+            <p class="m-opacity-mini">这里是Shouko的个人网站</p>
             <div class="ui inverted divider"></div>
             <p class="m-opacity-mini">copyright © 2020-2021 — All Rights Reserved.</p>
         </div>
-        
+
     </footer>
 
-    
+
     <!--引入semantic-ui的库-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <!-- 实现下拉菜单的悬停 -->
+    <script>
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+    </script>
 </body>
+
 </html>
