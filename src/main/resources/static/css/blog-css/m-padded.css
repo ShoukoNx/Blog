@@ -21,6 +21,10 @@
     padding-left: 2em !important;
     padding-right: 2em !important;
 }
+.m-padded-lr-middle {
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
 
 
 /* 上下内边距 */
