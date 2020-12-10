@@ -7,7 +7,12 @@
     <title>大家吼!~欢迎来到Shouko的主页</title>
     <!--semantic-ui的css-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <!-- animate动画的css -->
+    <link rel="stylesheet" href="../static/css/animate.css">
+    <!-- 博客页面通用css -->
     <link rel="stylesheet" href="../static/css/general.css">
+    <!-- 代码高亮插件prism的css -->
+    <link rel="stylesheet" href="../static/lib/prism/prism.css">
     <link rel="icon" href="../static/images/icon.ico" type="images/x-ico" />
 </head>
 
@@ -53,13 +58,13 @@
 
     </div>
 
-
-    <div class="m-container m-opacity m-padded-tb-large">
+    <!-- 中间内容 -->
+    <div class="animate__animated animate__fadeIn m-container m-opacity m-padded-tb-large">
         <div class="ui container">
             <div class="ui top attached segment">
                 <div class="ui mini horizontal link list">
                     <div class="item">
-                        <img src="./static/images/down.jpg" alt="" class="ui avatar image">
+                        <img src="../static/images/down.jpg" alt="" class="ui avatar image">
                         <div class="content"><a href="#" class="header">Shouko</a></div>
                     </div>
                     <div class="item">
@@ -71,9 +76,6 @@
                 </div>
             </div>
             <div class="ui attached segment">
-                <img src="./static/images/back.png" alt="" class="ui fluid rounded image">
-            </div>
-            <div class="ui attached segment">
                 <div class="ui basic right aligned segment">
                     <div class="ui orange basic label">原创</div>
                 </div>
@@ -81,12 +83,14 @@
                 <h2 class="ui center aligned header">MySQL的事务</h2>
 
                 <!-- 正文 -->
-                <div class="content">
+                <div class="content m-padded-lr-middle m-padded-tb-large js-toc-content">
+                    <pre><code class="language-python">print("hello")</code></pre>
+
 
                 </div>
 
                 <!-- 标签 -->
-                <div>
+                <div class="m-padded-lr-middle">
                     <div class="ui pink label m-text-thin">数据库</div>
                 </div>
 
@@ -180,6 +184,8 @@
         </div>
     </div>
 
+
+    <!-- 底部 -->
     <footer class="ui inverted m-opacity-mini vertical footer segment m-padded-tb-big">
         <div class="ui center aligned container">
             <h4 class="ui inverted header">关于本站</h4>
@@ -193,6 +199,8 @@
     <!--引入semantic-ui的库-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <!-- 引入代码高亮插件prism -->
+    <script src="../static/lib/prism/prism.js"></script>
     <script>
         $('.top-mark')
             .visibility({
