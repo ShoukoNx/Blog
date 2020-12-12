@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我~@Shouko的主页</title>
+    <!--semantic-ui的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <!-- animate动画的css -->
+    <link rel="stylesheet" href="../static/css/animate.css">
+    <!-- 博客页面通用css -->
+    <link rel="stylesheet" href="../static/css/general.css">
+    <!-- 代码高亮插件prism的css -->
+    <link rel="stylesheet" href="../static/lib/prism/prism.css">
+    <link rel="icon" href="../static/images/icon.ico" type="images/x-ico" />
+</head>
+
+
+<body>
+
+    <!-- 隐藏菜单 -->
+    <div class="ui large top fixed hidden menu">
+        <div class="ui container">
+            <a rel="#" class="item"><i class="home icon"></i>主页</a>
+            <a rel="#" class="item"><i class="book icon"></i>文章</a>
+            <a rel="#" class="item"><i class="archive icon"></i>资源</a>
+            <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
+            <a rel="#" class="active item"><i class="info icon"></i>关于我</a>
+            <div class="right item">
+                <div class="ui icon small input">
+                    <input type="text" placeholder="搜索全站...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主菜单 -->
+    <div class="ui inverted m-padded-tb-mini m-opacity-mini attached vertical top-mark center aligned segment">
+        <div class="ui container">
+            <div class="ui inverted secondary borderless pointing menu">
+                <a rel="#" class="item"><i class="home icon"></i>主页</a>
+                <a rel="#" class="item"><i class="book icon"></i>文章</a>
+                <a rel="#" class="item"><i class="archive icon"></i>资源</a>
+                <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
+                <a rel="#" class="active item"><i class="info icon"></i>关于我</a>
+                <div class="right item">
+                    <div class="ui icon small input">
+                        <input type="text" placeholder="搜索全站...">
+                        <i class="search link icon"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 中间内容 -->
+    <div class="m-container m-opacity m-padded-tb-large">
+        <div class="ui container">
+            <div class="ui attached segment m-padded-lr-middle m-padded-tb-large">
+                <h1 class="ui center aligned header">About Me</h1>
+                <br>
+                <div style="opacity: 100 !important;">
+                    <img class="ui fluid image animate__animated animate__pulse" src="../static/images/back.png" alt="">
+                </div>      
+                <div class="content m-padded-lr-middle m-padded-tb-large">
+                    <h3 class="ui center aligned header">一个Java初学者</h3>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 底部 -->
+    <footer class="ui inverted m-opacity-mini vertical footer segment m-padded-tb-big">
+        <div class="ui center aligned container">
+            <h4 class="ui inverted header">关于本站</h4>
+            <p>这里是Shouko的个人网站</p>
+            <div class="ui inverted divider"></div>
+            <p>copyright © 2020-2021 — All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <!--引入semantic-ui的库-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <!-- 引入代码高亮插件prism -->
+    <script src="../static/lib/prism/prism.js"></script>
+    <script>
+        $('.top-mark')
+            .visibility({
+                once: false,
+                onBottomPassed: function () {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function () {
+                    $('.fixed.menu').transition('fade out');
+                }
+            });
+    </script>
+</body>
+
+</html>
