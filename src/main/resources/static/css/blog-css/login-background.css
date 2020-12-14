@@ -1,6 +1,6 @@
-/* 通用背景 */
+/* 登录界面背景 */
 body{
-    background: url(../../images/login.jpg);
+    background: url(../../images/login.png);
     background-attachment:fixed;
     background-repeat: no-repeat;
     background-size:100% 100%;

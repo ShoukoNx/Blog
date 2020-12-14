@@ -1,8 +1,8 @@
 /* 通用背景 */
 body{
-    background: url(../../images/753621.png);
+    background: url(../../images/background.png);
     background-size:100%;
-    background-attachment:fixed;
+    background-attachment: fixed;
     height: 100%;
     width: 100%;
 }
