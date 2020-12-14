@@ -13,4 +13,5 @@ import lombok.Data;
 public class Type {
     //实现类型实体类
     //TODO:
+
 }
