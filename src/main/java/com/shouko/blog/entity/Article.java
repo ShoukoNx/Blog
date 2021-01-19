@@ -2,6 +2,9 @@ package com.shouko.blog.entity;
 
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -19,7 +22,7 @@ public class Article {
     private String title; //文章标题
     private String content; //文章内容
     private String copyrightInfo; //版权信息（转载，原创，翻译）
-    private String labels; //标签
+    private ArrayList<Label> labels; //标签
 
     private Integer views; //访问量
 
@@ -37,8 +40,8 @@ public class Article {
 
     private boolean published; //是否发布
 
-    private Date publishTime; //发布日期
-    private Date updateTime; //更新日期
+    private LocalDateTime publishTime; //发布日期
+    private LocalDateTime updateTime; //更新日期
 
 
 }

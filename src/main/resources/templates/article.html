@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -8,12 +8,12 @@
     <!--semantic-ui的css-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <!-- animate动画的css -->
-    <link rel="stylesheet" href="../static/css/animate.css">
+    <link rel="stylesheet" href="../static/css/animate.css" th:href="@{/css/animate.css}" >
     <!-- 博客页面通用css -->
-    <link rel="stylesheet" href="../static/css/general.css">
+    <link rel="stylesheet" href="../static/css/general.css" th:href="@{/css/general.css}">
     <!-- 代码高亮插件prism的css -->
     <link rel="stylesheet" href="../static/lib/prism/prism.css">
-    <link rel="icon" href="../static/images/icon.ico" type="images/x-ico" />
+    <link rel="icon" href="../static/images/icon.ico" th:href="@{/images/icon.ico}" type="images/x-ico" />
 </head>
 
 

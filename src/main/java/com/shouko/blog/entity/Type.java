@@ -13,5 +13,9 @@ import lombok.Data;
 public class Type {
     //实现类型实体类
     //TODO:
+    private Long id; //类型ID
+    private String name; //类型名称
+    private Integer count; //类型数量
+
 
 }

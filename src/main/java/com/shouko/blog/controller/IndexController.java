@@ -1,6 +1,9 @@
 package com.shouko.blog.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @Author ：ShoukoNx
@@ -12,5 +15,15 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class IndexController {
     //TODO
+
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
+
+    @GetMapping("/article/{id}")
+    public String article(@PathVariable Long id, Model model){
+        return "article";
+    }
 
 }
