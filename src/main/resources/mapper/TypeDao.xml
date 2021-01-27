@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper xmlns="http://mybatis.org/schema/mybatis-mapper">
+
+    <!-- 创建一个类型   -->
+    <insert id="createType" parameterType="com.shouko.blog.entity.Type">
+        INSERT INTO blog.t_type values (#{id}, #{name});
+    </insert>
+
+    <!--  根据ID查询一个类型  -->
+    <select id="getType" resultType="com.shouko.blog.entity.Type">
+        SELECT * FROM blog.t_type
+        WHERE id=#{id};
+    </select>
+
+    <!-- 根据名称查询一个类型   -->
+    <select id="getTypeByName" resultType="com.shouko.blog.entity.Type">
+        SELECT * FROM blog.t_type
+        WHERE name=#{name};
+    </select>
+
+    <!-- 查询所有类型   -->
+    <select id="getAllType" resultType="com.shouko.blog.entity.Type">
+        SELECT * FROM blog.t_type;
+    </select>
+
+    <!-- 根据ID更新一个类型的名称   -->
+    <update id="updateType" parameterType="com.shouko.blog.entity.Type">
+        UPDATE blog.t_type SET name=#{name} WHERE id=#{id};
+    </update>
+
+    <!-- 根据ID删除一个类型   -->
+    <delete id="deleteType">
+        DELETE FROM blog.t_type WHERE id=#{id};
+    </delete>
+
+
+</mapper>

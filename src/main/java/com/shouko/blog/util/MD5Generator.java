@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * @Author ShoukoNx
  * @Date Created in 2021/1/18 13:01
- * @Description MD5工具类
+ * @Description MD5工具类, 返回32位加密结果
  * @Version 1.0.0
  */
 public class MD5Generator {
@@ -26,14 +26,11 @@ public class MD5Generator {
                     buf.append("0");
                 buf.append(Integer.toHexString(i));
             }
-            //32位加密
             return buf.toString();
-            // 16位的加密
-            //return buf.toString().substring(8, 24);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             return null;
         }
-
     }
+
 }

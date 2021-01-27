@@ -2,6 +2,8 @@ package com.shouko.blog.entity;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+
 /**
  * @Author ：ShoukoNx
  * @Date ：Created in 2020/12/14 19:57
@@ -12,10 +14,7 @@ import lombok.Data;
 @Data
 public class Type {
     //实现类型实体类
-    //TODO:
     private Long id; //类型ID
     private String name; //类型名称
-    private Integer count; //类型数量
-
-
+    private ArrayList<Article> articles; //文章
 }

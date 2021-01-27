@@ -24,6 +24,7 @@ public class Article {
     private String copyrightInfo; //版权信息（转载，原创，翻译）
     private ArrayList<Label> labels; //标签
 
+
     private Integer views; //访问量
 
     private Long typeId; //类型ID
@@ -35,12 +36,14 @@ public class Article {
 
     private boolean canAppreciate; //是否可以赞赏
     private Integer appreciation; //赞赏数
+
+    private ArrayList<Comment> comments; //评论
     private boolean canComment; //是否可以评论
     private Integer commentCount; //评论总数
 
     private boolean published; //是否发布
 
-    private LocalDateTime publishTime; //发布日期
+    private LocalDateTime createTime; //发布日期
     private LocalDateTime updateTime; //更新日期
 
 

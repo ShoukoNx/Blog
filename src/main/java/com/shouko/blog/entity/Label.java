@@ -11,8 +11,6 @@ import lombok.Data;
 
 @Data
 public class Label {
-    //实现标签实体类
-    //TODO：
     private Long id; //标签id
     private String name; //标签名称
 }
