@@ -3,6 +3,7 @@ package com.shouko.blog.service.impl;
 import com.shouko.blog.Dao.UserDao;
 import com.shouko.blog.entity.User;
 import com.shouko.blog.service.UserService;
+import com.shouko.blog.util.MD5Generator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User checkUser(String username, String password) {
-        User user = userDao.findByUsernameAndPassword(username,password);
+        String encryptedPassword = MD5Generator.code(password);
+        User user = userDao.findByUsernameAndPassword(username,encryptedPassword);
         return user;
     }
 }

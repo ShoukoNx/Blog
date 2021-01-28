@@ -19,12 +19,9 @@ import java.util.List;
 @Service
 public class TypeServiceImpl implements TypeService {
 
+    @Autowired
     private TypeDao typeDao;
 
-    @Autowired
-    public void setTypeDao(TypeDao typeDao) {
-        this.typeDao = typeDao;
-    }
 
     @Transactional
     @Override

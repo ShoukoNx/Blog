@@ -2,7 +2,6 @@ package com.shouko.blog.controller.admin;
 
 import com.shouko.blog.entity.User;
 import com.shouko.blog.service.UserService;
-import com.shouko.blog.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +23,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/admin")
 public class LoginController {
+
     private UserService userService;
 
     @Autowired
@@ -43,10 +43,10 @@ public class LoginController {
         if(user != null){
             user.setPassword(password);
             session.setAttribute("user", user);
-            return "/admin/new-article";
+            return "/admin/article-input";
         } else {
             attributes.addFlashAttribute("message", "用户名或密码错误");
-            return "redirect:/admin";
+            return "redirect:/admin/login";
         }
 
     }
@@ -54,6 +54,6 @@ public class LoginController {
     @GetMapping("/logout")
     public String logout(HttpSession session){
         session.removeAttribute("user");
-        return "redirect: admin";
+        return "redirect: /admin/login";
     }
 }

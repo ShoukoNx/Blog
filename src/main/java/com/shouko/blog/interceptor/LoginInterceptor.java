@@ -17,7 +17,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //session里如果没有用户就重定向至登陆首页
         if(request.getSession().getAttribute("user") == null){
-            response.sendRedirect("admin");
+            response.sendRedirect("/admin");
             return false;
         }
         return true;

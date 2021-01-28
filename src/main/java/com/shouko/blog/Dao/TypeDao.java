@@ -1,6 +1,7 @@
 package com.shouko.blog.Dao;
 
 import com.shouko.blog.entity.Type;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * @Version: 1.0.0
  */
 
+@Mapper
 @Repository
 public interface TypeDao {
 

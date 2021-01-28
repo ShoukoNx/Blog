@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class IndexController {
-    //TODO
 
     @GetMapping("/")
     public String index(){

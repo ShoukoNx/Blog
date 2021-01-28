@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shouko.blog.Dao.ArticleDao">
+    <insert id="createArticle" parameterType="com.shouko.blog.entity.Article">
+        INSERT INTO blog.t_article
+        (id, title, content, copyright_info, views, can_appreciate, appreciation,
+        can_comment, comment_count, published, create_time, update_time, type_id,
+        user_id, recommend)
+        VALUES
+        (#{id}, #{title}, #{content}, #{copyrightInfo}, #{views}, #{canAppreciate}, #{appreciation},
+        #{canComment}, #{commentCount}, #{published}, #{createTime}, #{updateTime}, #{typeId},
+        #{userId}, #{recommend});
+    </insert>
+
+    <resultMap id="article" type="com.shouko.blog.query.ArticleQuery">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="published" column="published"/>
+        <result property="recommend" column="recommend"/>
+        <result property="typeId" column="type_id"/>
+        <association property="type" javaType="com.shouko.blog.entity.Type">
+            <id property="id" column="id"/>
+            <result property="name" column="name"/>
+        </association>
+    </resultMap>
+
+    <select id="getAllArticles" resultMap="article">
+        SELECT a.id, a.title, a.update_time, a.published, a.recommend, a.type_id, t.id, t.name
+        FROM blog.t_article a LEFT OUTER JOIN blog.t_type t ON a.type_id = t.id
+        ORDER BY a.update_time DESC;
+    </select>
+
+    <delete id="delete">
+        DELETE FROM blog.t_article where id = #{id};
+    </delete>
+
+</mapper>

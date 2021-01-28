@@ -42,6 +42,7 @@ public class Article {
     private Integer commentCount; //评论总数
 
     private boolean published; //是否发布
+    private boolean recommend; //是否推荐
 
     private LocalDateTime createTime; //发布日期
     private LocalDateTime updateTime; //更新日期

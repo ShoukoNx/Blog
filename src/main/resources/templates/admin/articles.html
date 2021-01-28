@@ -101,8 +101,8 @@
                         <td>是</td>
                         <td>2020-12-8</td>
                         <td>
-                            <a href="" class="ui mini teal button">编辑</a>
-                            <a href="" class="ui mini red button">删除</a>
+                            <a href="" th:href="@{/admin/articles/{id}/delete(id=${article.id})}" class="ui mini teal button">编辑</a>
+                            <a href="" th:href="@{/admin/articles/{id}/delete(id=${article.id})}" onclick="return confirm('确定要删除该文章吗？三思啊! 删了可就没了！')"  class="ui mini red button">删除</a>
                         </td>
                     </tr>
                     <tr>
