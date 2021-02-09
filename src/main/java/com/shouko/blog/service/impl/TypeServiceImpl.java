@@ -45,6 +45,11 @@ public class TypeServiceImpl implements TypeService {
     }
 
     @Override
+    public List<Type> getAllTypeAndArticle() {
+        return typeDao.getAllTypeAndArticle();
+    }
+
+    @Override
     @Transactional
     public int updateType(Type type) {
         return typeDao.updateType(type);

@@ -1,6 +1,7 @@
 package com.shouko.blog.Dao;
 
 import com.shouko.blog.entity.Type;
+import com.shouko.blog.query.FirstPageArticle;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +25,9 @@ public interface TypeDao {
     Type getType(Long id);
     Type getTypeByName(String name);
     List<Type> getAllType();
+    // 查询所有分类
+    List<Type> getAllTypeAndArticle();
+
 
     //U
     int updateType(Type type);

@@ -1,6 +1,6 @@
 /* 通用背景 */
 body{
-    background: url(../../images/background.png);
+    background: #f0f0f0;
     background-size:100%;
     background-attachment: fixed;
     height: 100%;

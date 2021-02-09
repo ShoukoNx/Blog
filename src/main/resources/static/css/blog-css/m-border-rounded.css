@@ -1,0 +1,22 @@
+
+.m-border-rounded-tiny{
+    border-radius: 0.5em !important;
+}
+
+.m-border-rounded-small{
+    border-radius: 1em !important;
+}
+
+.m-border-rounded-middle{
+    border-radius: 2em !important;
+}
+
+.m-border-rounded-middle-t{
+    border-top-left-radius: 2em !important;
+    border-top-right-radius: 2em !important;
+}
+
+.m-border-rounded-middle-b{
+    border-bottom-left-radius: 2em !important;
+    border-bottom-right-radius: 2em !important;
+}

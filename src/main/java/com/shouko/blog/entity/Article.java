@@ -21,8 +21,9 @@ public class Article {
     private Long id; //文章ID
     private String title; //文章标题
     private String content; //文章内容
+    private String description; //文章描述，用于首页展示
     private String copyrightInfo; //版权信息（转载，原创，翻译）
-    private ArrayList<Label> labels; //标签
+    private String firstPagePic; //首页配图
 
 
     private Integer views; //访问量

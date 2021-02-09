@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MySQL的事务@Shouko的主页</title>
+    <title th:text="${article.title}"></title>
     <!--semantic-ui的css-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
     <!-- animate动画的css -->
@@ -12,7 +12,7 @@
     <!-- 博客页面通用css -->
     <link rel="stylesheet" href="../static/css/general.css" th:href="@{/css/general.css}">
     <!-- 代码高亮插件prism的css -->
-    <link rel="stylesheet" href="../static/lib/prism/prism.css">
+    <link rel="stylesheet" href="../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
     <link rel="icon" href="../static/images/icon.ico" th:href="@{/images/icon.ico}" type="images/x-ico" />
 </head>
 
@@ -20,93 +20,57 @@
 <body>
 
     <!-- 隐藏菜单 -->
-    <div class="ui large top fixed hidden menu">
-        <div class="ui container">
-            <a rel="#" class="item"><i class="home icon"></i>主页</a>
-            <a rel="#" class="active item"><i class="book icon"></i>文章</a>
-            <a rel="#" class="item"><i class="archive icon"></i>资源</a>
-            <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
-            <a rel="#" class="item"><i class="info icon"></i>关于我</a>
-            <div class="right item">
-                <div class="ui icon small input">
-                    <input type="text" placeholder="搜索全站...">
-                    <i class="search link icon"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <div th:replace="fragment/template :: hiddenMenu"></div>
     <!-- 主菜单 -->
-    <div class="ui inverted m-padded-tb-mini m-opacity-mini attached vertical top-mark center aligned segment">
-        <div class="ui container">
-            <div class="ui inverted secondary borderless pointing menu">
-                <!-- <h2 class="uiattached teal header item">Shouko</h2> -->
-                <a rel="#" class="item"><i class="home icon"></i>主页</a>
-                <a rel="#" class="active item"><i class="book icon"></i>文章</a>
-                <a rel="#" class="item"><i class="archive icon"></i>资源</a>
-                <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
-                <a rel="#" class="item"><i class="info icon"></i>关于我</a>
-                <div class="right item">
-                    <div class="ui icon small input">
-                        <input type="text" placeholder="搜索全站...">
-                        <i class="search link icon"></i>
-                    </div>
-                </div>
-            </div>
+    <div th:replace="fragment/template :: mainMenu" ></div>
 
-        </div>
-
-    </div>
 
     <!-- 中间内容 -->
-    <div class="animate__animated animate__fadeIn m-container m-opacity m-padded-tb-large">
+    <div class="animate__animated animate__fadeIn m-container m-opacity m-padded-tb-middle">
         <div class="ui container">
-            <div class="ui top attached segment">
-                <div class="ui mini horizontal link list">
-                    <div class="item">
-                        <img src="../static/images/down.jpg" alt="" class="ui avatar image">
-                        <div class="content"><a href="#" class="header">Shouko</a></div>
+            <div class="ui top attached segment m-border-rounded-middle">
+                <div class="ui grid">
+                    <div class="eight wide column">
+                        <div class="ui basic segment">
+                            <div class="ui mini horizontal link list">
+                                <div class="item">
+                                    <img src="../static/images/down.jpg" th:src="${article.avatar}" alt="" class="ui avatar image">
+                                    <div class="content"><a href="#" th:href="@{/about}" class="header" th:text="${article.nickname}">Shouko</a></div>
+                                </div>
+                                <div class="item">
+                                    <i class="calendar icon"></i>
+                                    <span th:text="${#temporals.format(article.updateTime,'yyyy-MM-dd')}"></span>
+                                </div>
+                                <div class="item">
+                                    <i class="eye icon"></i>
+                                    <span th:text="${article.views}"></span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="item">
-                        <i class="calendar icon"></i> 2020-11-5
+                    <div class="eight wide column">
+                        <div class="ui basic right aligned segment">
+                            <div class="ui orange basic label" th:text="${article.copyrightInfo}">原创</div>
+                        </div>
                     </div>
-                    <div class="item">
-                        <i class="eye icon"></i> 123
-                    </div>
-                </div>
-            </div>
-            <div class="ui attached segment">
-                <div class="ui basic right aligned segment">
-                    <div class="ui orange basic label">原创</div>
                 </div>
 
-                <h2 class="ui center aligned header">MySQL的事务</h2>
+
+                <h2 class="ui center aligned header" th:text="${article.title}"></h2>
 
                 <!-- 正文 -->
-                <div class="content m-padded-lr-middle m-padded-tb-large">
-                    <p>这是一个文章的测试，用于测试目前文章的文字区域</p>
-                    <p>  为确保核电厂运行状态满足相关技术要求，需对机组运行相关的20000多个参数进行实时监测。在现役核电机组中，
-                        基于人机功能分配，相关监测任务由DCS系统和操纵员共同配合完成，DCS系统用于“守底线”，操纵员负责“尽早
-                        发现异常”。在DCS系统中，针对不同的运行参数设有固定的“报警阈值”，当运行参数的范围突破“报警阈值”时，
-                        即触发DCS系统报警，提示机组发生故障。根据海因里希法则，要防止重大事故的发生必须减少和消除无伤害事
-                        故，要重视事故的苗头和未遂事故。因此，为尽早发现系统的潜在异常，操纵员在值班过程中会基于主控室DC
-                        S工作站的监控界面进行定期巡盘，巡盘目的是，在相关参数突破前述“报警阈值”前，尽早发现该参数的异
-                        常行为并及时纠正。然而，在面对海量数据时，人极难准确识别其中尚未有明显可视特征的异常信息，并
-                        且，在应对数量庞大的监测参数时，即便即使是明显可视的异常信息，也会存在未能及时准确识别的情况，
-                        导致漏判等人因失误</p>
-                    <pre><code class="language-python">print("hello")</code></pre>
-
-
+                <div class="content m-padded-lr-middle m-padded-tb-large" th:utext="${article.content}">
+                    <pre><code></code></pre>
                 </div>
 
                 <!-- 标签 -->
                 <div class="m-padded-lr-middle">
-                    <div class="ui pink label m-text-thin">数据库</div>
+                    <div class="ui pink label m-text-thin" th:text="${article.typeName}">数据库</div>
                 </div>
 
 
             </div>
-            <div class="ui bottom attached segment">
+            <!--<div class="ui bottom attached segment">
                 <div class="ui comments m-padded-lr-small">
                     <h3 class="ui dividing header m-padded-tb-tiny">留言板</h3>
                     <div class="comment">
@@ -190,27 +154,20 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 
 
     <!-- 底部 -->
-    <footer class="ui inverted m-opacity-mini vertical footer segment m-padded-tb-big">
-        <div class="ui center aligned container">
-            <h4 class="ui inverted header">关于本站</h4>
-            <p>这里是Shouko的个人网站</p>
-            <div class="ui inverted divider"></div>
-            <p>copyright © 2020-2021 — All Rights Reserved.</p>
-        </div>
-    </footer>
+    <footer th:replace="fragment/template :: footer"></footer>
 
 
     <!--引入semantic-ui的库-->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
     <!-- 引入代码高亮插件prism -->
-    <script src="../static/lib/prism/prism.js"></script>
+    <script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
     <script>
         $('.top-mark')
             .visibility({

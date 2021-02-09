@@ -4,34 +4,51 @@
 
     <!-- 创建一个类型   -->
     <insert id="createType" parameterType="com.shouko.blog.entity.Type">
-        INSERT INTO blog.t_type values (#{id}, #{name});
+        INSERT INTO blog.t_type values (#{id}, #{name}, #{color})
     </insert>
 
     <!--  根据ID查询一个类型  -->
     <select id="getType" resultType="com.shouko.blog.entity.Type">
         SELECT * FROM blog.t_type
-        WHERE id=#{id};
+        WHERE id=#{id}
     </select>
 
     <!-- 根据名称查询一个类型   -->
     <select id="getTypeByName" resultType="com.shouko.blog.entity.Type">
         SELECT * FROM blog.t_type
-        WHERE name=#{name};
+        WHERE name=#{name}
     </select>
 
     <!-- 查询所有类型   -->
     <select id="getAllType" resultType="com.shouko.blog.entity.Type">
-        SELECT * FROM blog.t_type;
+        SELECT * FROM blog.t_type
+    </select>
+
+    <resultMap id="type" type="com.shouko.blog.entity.Type">
+        <id property="id" column="tid"/>
+        <result property="name" column="name"/>
+        <result property="color" column="color"/>
+        <collection property="articles" ofType="com.shouko.blog.entity.Article">
+            <id property="id" column="aid"/>
+            <result property="title" column="title"/>
+            <result property="typeId" column="type_id"/>
+        </collection>
+    </resultMap>
+    
+    <select id="getAllTypeAndArticle" resultMap="type">
+        SELECT t.id tid, t.name, t.color, a.id aid, a.title, a.type_id
+        FROM blog.t_article a, blog.t_type t
+        WHERE t.id=a.type_id
     </select>
 
     <!-- 根据ID更新一个类型的名称   -->
     <update id="updateType" parameterType="com.shouko.blog.entity.Type">
-        UPDATE blog.t_type SET name=#{name} WHERE id=#{id};
+        UPDATE blog.t_type SET name=#{name} WHERE id=#{id}
     </update>
 
     <!-- 根据ID删除一个类型   -->
     <delete id="deleteType">
-        DELETE FROM blog.t_type WHERE id=#{id};
+        DELETE FROM blog.t_type WHERE id=#{id}
     </delete>
 
 

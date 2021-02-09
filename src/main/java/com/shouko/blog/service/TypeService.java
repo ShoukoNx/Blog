@@ -19,6 +19,7 @@ public interface TypeService {
     Type getType(Long id);
     Type getTypeByName(String name);
     List<Type> getAllType();
+    List<Type> getAllTypeAndArticle();
 
     //U
     int updateType(Type type);

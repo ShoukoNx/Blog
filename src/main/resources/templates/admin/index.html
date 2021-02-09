@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章发布</title>
+    <!--semantic-ui的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/general.css" th:href="@{/css/general.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="icon" href="../../static/images/icon.ico" th:href="@{images/icon.ico}" type="images/x-ico" />
+</head>
+
+
+<body>
+
+    <!-- 导航栏 -->
+    <nav class="ui inverted m-padded-tb-mini attached vertical center aligned segment">
+        <div class="ui container">
+            <div class="ui inverted secondary borderless pointing menu">
+                <a class="h3 ui header item m-opacity-mini" th:href="@{/admin/articles}">管理后台</a>
+                <a rel="#" th:href="@{/admin/articles}" class="item"><i class="home icon"></i>文章管理</a>
+                <a rel="#" class="item"><i class="clone icon"></i>分类管理</a>
+                <a rel="#" class="item"><i class="archive icon"></i>资源管理</a>
+                <div class="right m-mobile-hide menu">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <img class="ui avatar image" th:src="${session.user.avatar}"/>
+                            <span th:text="${session.user.nickname}">123</span>
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </nav>
+
+    <br>
+    <br>
+
+
+
+
+
+    <div class="ui container">
+        <img class="ui fluid image" src="../../static/images/back.png" th:src="@{/images/back.png}"/>
+    </div>
+
+    <br>
+    <br>
+
+
+
+
+    <footer class="ui inverted vertical footer segment m-padded-tb-big">
+        <div class="ui center aligned container">
+            <h4 class="ui inverted header m-opacity-mini">关于本站</h4>
+            <p class="m-opacity-mini">这里是Shouko的个人网站</p>
+            <div class="ui inverted divider"></div>
+            <p class="m-opacity-mini">copyright © 2020-2021 — All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <!--引入semantic-ui的库-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <!-- 引入markdown编辑器 -->
+    <script src="../../static/lib/editormd/editormd.min.js" th:src="@{/lib/editormd/editormd.min.js}"></script>
+    <script>
+
+
+        //移动端显示
+        $('.memu.toggle').click(function () {
+            $('.m-item').toggleClass('m-moobile-hide');
+        });
+
+        //下拉菜单悬浮
+        $('.ui.dropdown').dropdown({
+            on: 'hover'
+        });
+
+
+
+    </script>
+</body>
+
+</html>

@@ -15,46 +15,12 @@
 <body>
 
     <!-- 隐藏菜单 -->
-    <div class="ui large top fixed hidden menu">
-        <div class="ui container">
-            <a rel="#" class="item"><i class="home icon"></i>主页</a>
-            <a rel="#" class="active item"><i class="book icon"></i>文章</a>
-            <a rel="#" class="item"><i class="archive icon"></i>资源</a>
-            <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
-            <a rel="#" class="item"><i class="info icon"></i>关于我</a>
-            <div class="right item">
-                <div class="ui icon small input">
-                    <input type="text" placeholder="搜索全站...">
-                    <i class="search link icon"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div th:replace="fragment/template :: hiddenMenu"></div>
 
     <!-- 主菜单 -->
-    <div class="ui inverted m-padded-tb-mini m-opacity-mini attached vertical top-mark center aligned segment">
-        <div class="ui container">
-            <div class="ui inverted secondary borderless pointing menu">
-                <!-- <h2 class="uiattached teal header item">Shouko</h2> -->
-                <a rel="#" class="item"><i class="home icon"></i>主页</a>
-                <a rel="#" class="active item"><i class="book icon"></i>文章</a>
-                <a rel="#" class="item"><i class="archive icon"></i>资源</a>
-                <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
-                <a rel="#" class="item"><i class="info icon"></i>关于我</a>
-                <div class="right item">
-                    <div class="ui icon small input">
-                        <input type="text" placeholder="搜索全站...">
-                        <i class="search link icon"></i>
-                    </div>
-                </div>
-            </div>
+    <div th:replace="fragment/template :: mainMenu" ></div>
 
-        </div>
-
-    </div>
-
-
-    <div class="m-container m-opacity m-padded-tb-large">
+    <div class="m-container m-opacity m-padded-tb-massive">
         <div class="ui container">
             <div class="ui segments">
                 <div class="ui segment">
@@ -66,146 +32,56 @@
                 </div>
                 <div class="ui segment">
                     <div class="ui pointing menu">
-                        <a class="item">
-                            Java
-                            <div class="floating mini ui orange label">10</div>
-                        </a>
-                        <a class="item">
-                            Python
-                            <div class="floating mini ui blue label">2</div>
-                        </a>
-                        <a class="active item">
-                            数据库
-                            <div class="floating mini ui purple label">6</div>
-                        </a>
-                        <a class="item">
-                            计算机基础
-                            <div class="floating mini ui teal label">6</div>
-                        </a>
-                        <a class="item">
-                            数据结构与算法
-                            <div class="floating mini ui pink label">6</div>
-                        </a>
-                        <a class="item">
-                            科研
-                            <div class="floating mini ui grey label">6</div>
-                        </a>
-                        <a class="item">
-                            杂谈
-                            <div class="floating mini ui olive label">6</div>
-                        </a>
+                        <div th:each="type : ${types}">
+                            <a class="item" th:href="@{/article-zone/{id}(id=${type.id})}" th:classappend="${type.id==activeTypeId} ? 'active' " th:text="${type.name}">
+                                Java
+                                <div class="floating mini ui label" th:classappend="${type.color}" th:text="${ #arrays.length(type.articles) }">10</div>
+                            </a>
+                        </div>
                         <div class="right menu">
                             <div class="item">
                                 <div class="ui transparent icon input">
-                                    <input type="text" placeholder="搜索文章或标签...">
+                                    <input type="text" placeholder="搜索文章">
                                     <i class="search link icon"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="ui segment m-padded-lr-small">
+                <div class="ui segment m-padded-lr-small" th:each="article: ${pageInfo.list} ">
                     <div class="ui grid">
                         <div class="eleven wide column">
-                            <h3 class="ui header"><a href="#">MySQL的事务</a></h3>
-                            <p>读未提交(Read uncommitted)，一个事务可以读取另一个未提交事务的数据，最低级别，任何情况都无法保证。</p>
+                            <h3 class="ui header"><a th:href="@{/article/{id}(id=${article.id})}" th:text="${article.title}">"MySQL的事务</a></h3>
+                            <p th:text="|${article.description}......|" >读未提交(Read uncommitted)，一个事务可以读取另一个未提交事务的数据，最低级别，任何情况都无法保证。</p>
                             <div class="ui grid">
                                 <div class="eleven wide column">
                                     <div class="ui horizontal link list">
                                         <div class="item">
-                                            <img src="./static/images/down.jpg" alt="" class="ui avatar image">
-                                            <div class="content"><a href="#" class="header">Shouko</a></div>
+                                            <img src="../static/images/down.jpg" th:src="${article.avatar}" alt="" class="ui avatar image">
+                                            <div class="content" th:text="${article.nickname}">Shouko</div>
+                                        </div>
+                                        <div class="item" >
+                                            <i class="calendar icon"></i>
+                                            <span th:text="${#temporals.format(article.createTime,'yyyy-MM-dd')}"></span>
                                         </div>
                                         <div class="item">
-                                            <i class="calendar icon"></i> 2020-11-5
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i> 123
+                                            <i class="eye icon"></i>
+                                            <span th:text="${article.views}"></span>
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="right aligned five wide column">
-                                    <a href="#" target="_blank" class="ui pink label m-text-thin m-padded-mini">数据库</a>
-
+                                    <a href="#" target="_blank" class="ui pink label m-text-thin m-padded-mini" th:text="${article.typeName}">数据库</a>
                                 </div>
                             </div>
                         </div>
                         <div class="five wide column">
                             <a href="#" target="_blank">
-                                <img src="https://picsum.photos/id/1005/800/450" alt="" class="ui rounded image">
+                                <img src="https://picsum.photos/id/1005/800/450" th:src="${article.firstPagePic}" class="ui rounded image"/>
                             </a>
                         </div>
 
-                    </div>
-                </div>
-                <div class="ui segment m-padded-lr-small">
-                    <div class="ui grid">
-                        <div class="eleven wide column">
-                            <h3 class="ui header"><a href="#">MySQL的事务</a></h3>
-                            <p>读未提交(Read uncommitted)，一个事务可以读取另一个未提交事务的数据，最低级别，任何情况都无法保证。</p>
-                            <div class="ui grid">
-                                <div class="eleven wide column">
-                                    <div class="ui horizontal link list">
-                                        <div class="item">
-                                            <img src="./static/images/down.jpg" alt="" class="ui avatar image">
-                                            <div class="content"><a href="#" class="header">Shouko</a></div>
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i> 2020-11-5
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i> 123
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="right aligned five wide column">
-                                    <a href="#" target="_blank" class="ui pink label m-text-thin m-padded-mini">数据库</a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="five wide column">
-                            <a href="#" target="_blank">
-                                <img src="https://picsum.photos/id/1008/800/450" alt="" class="ui rounded image">
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="ui segment m-padded-lr-small">
-                    <div class="ui grid">
-                        <div class="eleven wide column">
-                            <h3 class="ui header"><a href="#">MySQL的事务</a></h3>
-                            <p>读未提交(Read uncommitted)，一个事务可以读取另一个未提交事务的数据，最低级别，任何情况都无法保证。</p>
-                            <div class="ui grid">
-                                <div class="eleven wide column">
-                                    <div class="ui horizontal link list">
-                                        <div class="item">
-                                            <img src="./static/images/down.jpg" alt="" class="ui avatar image">
-                                            <div class="content"><a href="#" class="header">Shouko</a></div>
-                                        </div>
-                                        <div class="item">
-                                            <i class="calendar icon"></i> 2020-11-5
-                                        </div>
-                                        <div class="item">
-                                            <i class="eye icon"></i> 123
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="right aligned five wide column">
-                                    <a href="#" target="_blank" class="ui pink label m-text-thin m-padded-mini">数据库</a>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="five wide column">
-                            <a href="#" target="_blank">
-                                <img src="https://picsum.photos/id/1008/800/450" alt="" class="ui rounded image">
-                            </a>
-                        </div>
                     </div>
                 </div>
                 <div class="ui center aligned segment">
@@ -236,18 +112,9 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
 
-    <footer class="ui inverted m-opacity-mini vertical footer segment m-padded-tb-big">
-        <div class="ui center aligned container">
-            <h4 class="ui inverted header ">关于本站</h4>
-            <p class="">这里是Shouko的个人网站</p>
-            <div class="ui inverted divider"></div>
-            <p class="">copyright © 2020-2021 — All Rights Reserved.</p>
-        </div>
 
-    </footer>
+    <footer th:replace="fragment/template :: footer"></footer>
 
 
     <!--引入semantic-ui的库-->

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shouko.blog.Dao.ArticleDao">
+
     <insert id="createArticle" parameterType="com.shouko.blog.entity.Article">
         INSERT INTO blog.t_article
-        (id, title, content, copyright_info, views, can_appreciate, appreciation,
+        (id, title, content,description, copyright_info, views, can_appreciate, appreciation,
         can_comment, comment_count, published, create_time, update_time, type_id,
-        user_id, recommend)
+        user_id, recommend, first_page_pic)
         VALUES
-        (#{id}, #{title}, #{content}, #{copyrightInfo}, #{views}, #{canAppreciate}, #{appreciation},
+        (#{id}, #{title}, #{content},#{description}, #{copyrightInfo}, #{views}, #{canAppreciate}, #{appreciation},
         #{canComment}, #{commentCount}, #{published}, #{createTime}, #{updateTime}, #{typeId},
-        #{userId}, #{recommend});
+        #{userId}, #{recommend}, #{firstPagePic})
     </insert>
 
     <resultMap id="article" type="com.shouko.blog.query.ArticleQuery">
@@ -24,15 +25,102 @@
             <result property="name" column="name"/>
         </association>
     </resultMap>
-
     <select id="getAllArticles" resultMap="article">
-        SELECT a.id, a.title, a.update_time, a.published, a.recommend, a.type_id, t.id, t.name
+        SELECT a.id, a.title, a.description, a.update_time, a.published, a.recommend, a.type_id, t.id, t.name
         FROM blog.t_article a LEFT OUTER JOIN blog.t_type t ON a.type_id = t.id
-        ORDER BY a.update_time DESC;
+        ORDER BY a.update_time DESC
     </select>
 
+    <select id="getArticleById" resultType="com.shouko.blog.query.ShowArticle">
+        SELECT id, title, copyright_info, description, content, type_id, can_comment,
+               recommend, can_appreciate, published, update_time, first_page_pic
+        FROM blog.t_article WHERE id = #{id}
+    </select>
+
+    <select id="getArticleByTitleAndType" parameterType="com.shouko.blog.query.SearchArticle" resultMap="article">
+        <bind name="pattern" value="'%' + title + '%'" />
+        SELECT a.id,a.title,a.type_id,t.id,t.name from blog.t_article a ,blog.t_type t
+        <where>
+            <if test="1 == 1">
+                a.type_id = t.id
+            </if>
+            <if test="typeId != null">
+                and a.type_id = #{typeId}
+            </if>
+            <if test="title != null">
+                and a.title like #{pattern}
+            </if>
+        </where>
+    </select>
+
+    <resultMap id="firstPageArticle" type="com.shouko.blog.query.FirstPageArticle">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="description" column="description"/>
+        <result property="nickname" column="nickname"/>
+        <result property="avatar" column="avatar"/>
+        <result property="createTime" column="create_time"/>
+        <result property="views" column="views"/>
+        <result property="typeName" column="Name"/>
+        <result property="firstPagePic" column="firstPagePic"/>
+    </resultMap>
+    <select id="getFirstPageArticles" resultMap="firstPageArticle">
+        SELECT a.id, a.title, a.description, a.create_time, a.views, a.first_page_pic,
+               u.nickname, u.avatar,
+               t.name FROM blog.t_article a, blog.t_user u,blog.t_type t WHERE
+                a.user_id=u.id AND a.type_id=t.id AND a.recommend=TRUE AND a.published=TRUE ORDER BY a.update_time DESC LIMIT 3 OFFSET 0
+    </select>
+
+    <select id="getArticlesByTypeId" resultMap="firstPageArticle">
+        SELECT a.id, a.title, a.description, a.create_time, a.views, a.first_page_pic,
+               u.nickname, u.avatar,
+               t.name FROM blog.t_article a, blog.t_user u,blog.t_type t WHERE
+            a.user_id=u.id AND a.type_id=t.id AND a.type_id=#{typeId} AND a.published=TRUE ORDER BY a.update_time DESC
+    </select>
+
+    <resultMap id="detailedArticle" type="com.shouko.blog.query.DetailedArticle">
+        <id property="id" column="id"/>
+        <result property="copyrightInfo" column="copyright_info"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="views" column="views"/>
+        <result property="canAppreciate" column="can_appreciate"/>
+        <result property="appreciation" column="appreciation"/>
+        <result property="canComment" column="can_comment"/>
+        <result property="commentCount" column="comment_count"/>
+        <result property="nickname" column="nickname"/>
+        <result property="avatar" column="avatar"/>
+        <result property="typeName" column="name"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="getDetailedArticle" resultMap="detailedArticle">
+        SELECT a.id, a.copyright_info, a.title, a.content, a.views,
+               a.can_appreciate, a.appreciation, a.can_comment, a.comment_count, a.update_time,
+               u.nickname, u.avatar,
+               t.name
+        FROM blog.t_article a, blog.t_user u, blog.t_type t
+        WHERE a.id=#{id} AND a.type_id=t.id AND a.user_id=u.id
+    </select>
+
+
+
+    <update id="updateArticle" parameterType="com.shouko.blog.query.ShowArticle">
+        UPDATE blog.t_article SET
+        title=#{title}, copyright_info=#{copyrightInfo}, description=#{description},
+        content=#{content}, type_id=#{typeId}, can_comment=#{canComment}, recommend=#{recommend}, can_appreciate=#{canAppreciate},
+        published=#{published}, update_time=#{updateTime}, first_page_pic=#{firstPagePic} WHERE id = #{id}
+    </update>
+
+    <update id="updateViews" parameterType="com.shouko.blog.entity.Article">
+        UPDATE blog.t_article a SET a.views = a.views + 1 WHERE a.id=#{id}
+    </update>
+
+
+
+
     <delete id="delete">
-        DELETE FROM blog.t_article where id = #{id};
+        DELETE FROM blog.t_article where id = #{id}
     </delete>
 
 </mapper>

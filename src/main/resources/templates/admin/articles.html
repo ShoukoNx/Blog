@@ -15,13 +15,13 @@
 <body>
 
     <!-- 导航栏 -->
-    <nav class="ui inverted m-padded-tb-mini m-opacity-mini attached vertical center aligned segment">
+    <nav class="ui inverted m-padded-tb-mini attached vertical center aligned segment">
         <div class="ui container">
             <div class="ui inverted secondary borderless pointing menu">
                 <h3 class="ui header item m-opacity-mini">管理后台</h3>
-                <a rel="#" class="item"><i class="home icon"></i>文章管理</a>
-                <a rel="#" class="item"><i class="clone icon"></i>分类管理</a>
-                <a rel="#" class="item"><i class="archive icon"></i>资源管理</a>
+                <a rel="#" th:href="@{/admin/articles}" class="item"><i class="home icon"></i>文章管理</a>
+                <a rel="#" th:href="@{/admin/articles}" class="item"><i class="clone icon"></i>分类管理</a>
+                <a rel="#" th:href="@{/admin/articles}" class="item"><i class="archive icon"></i>资源管理</a>
                 <div class="right m-mobile-hide menu">
                     <div class="ui dropdown item">
                         <div class="text">
@@ -41,13 +41,15 @@
             <i class="sidebar icon"></i>
         </a>
     </nav>
+    <br>
+    <br>
 
 
 
     <div class="m-container-small m-padded-tb-large">
         <div class="ui right aligned container">
-            <button type="button" id="newArticle-btn" class="ui olive button">新的文章</button>
-            <button type="button" id="articleList-btn" class="ui brown button">文章列表</button>
+            <a type="button" id="newArticle-btn" class="ui olive button" th:href="@{article/input}">新的文章</a>
+            <a type="button" id="articleList-btn" class="ui brown button" th:href="@{/admin/articles}">文章列表</a>
         </div>
         <br>
 
@@ -81,79 +83,55 @@
                 </div>
             </form>
 
-            <table class="ui padded table">
-                <thead>
+            <div id="table-container">
+                <table th:fragment="articleList" class="ui padded table">
+                    <thead>
                     <tr>
                         <th></th>
                         <th>标题</th>
                         <th>类型</th>
                         <th>推荐</th>
+                        <th>状态</th>
                         <th>更新时间</th>
                         <th>操作</th>
                     </tr>
-                </thead>
+                    </thead>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>MySQL的事务</td>
-                        <td>数据库</td>
-                        <td>是</td>
-                        <td>2020-12-8</td>
+                    <tbody>
+                    <tr th:each="article,iterStat : ${pageInfo.list}">
+                        <td th:text="${iterStat.count}">1</td>
+                        <td th:text="${article.title}">MySQL的事务</td>
+                        <td th:text="${article.getType().name}">数据库</td>
+                        <td th:text="${article.recommend} ? '是':'否'">是</td>
+                        <td th:text="${article.published} ? '发布':'草稿'">草稿</td>
+                        <td th:text="${#temporals.format(article.updateTime,'yyyy-MM-dd HH:mm')}">2020-12-8</td>
                         <td>
-                            <a href="" th:href="@{/admin/articles/{id}/delete(id=${article.id})}" class="ui mini teal button">编辑</a>
-                            <a href="" th:href="@{/admin/articles/{id}/delete(id=${article.id})}" onclick="return confirm('确定要删除该文章吗？三思啊! 删了可就没了！')"  class="ui mini red button">删除</a>
+                            <a href=""  th:href="@{/admin/articles/{id}/input(id=${article.id})}" class="ui mini teal button">编辑</a>
+                            <a href=""  th:href="@{/admin/articles/{id}/delete(id=${article.id})}" onclick="return confirm('确定要删除该文章吗？三思啊! 删了可就没了！')"  class="ui mini red button">删除</a>
                         </td>
                     </tr>
+                    </tbody>
+                    <tfoot>
                     <tr>
-                        <td>2</td>
-                        <td>MySQL的事务</td>
-                        <td>数据库</td>
-                        <td>是</td>
-                        <td>2020-12-8</td>
-                        <td>
-                            <a href="" class="ui mini teal button">编辑</a>
-                            <a href="" class="ui mini red button">删除</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>MySQL的事务</td>
-                        <td>数据库</td>
-                        <td>是</td>
-                        <td>2020-12-8</td>
-                        <td>
-                            <a href="" class="ui mini teal button">编辑</a>
-                            <a href="" class="ui mini red button">删除</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>MySQL的事务</td>
-                        <td>数据库</td>
-                        <td>是</td>
-                        <td>2020-12-8</td>
-                        <td>
-                            <a href="" class="ui mini teal button">编辑</a>
-                            <a href="" class="ui mini red button">删除</a>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th colspan="6">
-                            <div class="ui right floated pagination menu">
-                                <a class="icon item">
-                                    <i class="left chevron icon"></i>
-                                </a>
-                                <a class="icon item">
-                                    <i class="right chevron icon"></i>
-                                </a>
+                        <th colspan="7">
+                            <div class="ui inverted divided stackable grid">
+                                <div class="three wide column" align="center">
+                                    <a class="item" th:href="@{/admin/articles(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}" th:unless="${pageInfo.isFirstPage}">上一页</a>
+                                </div>
+
+                                <div class="ten wide column" align="center">
+                                    <p>第 <span th:text="${pageInfo.pageNum}"></span> 页，共 <span th:text="${pageInfo.pages}"></span> 页，有 <span th:text="${pageInfo.total}"></span> 篇文章</p>
+                                </div>
+
+                                <div class="three wide column" align="center">
+                                    <a class="item" th:href="@{/admin/articles(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}" th:unless="${pageInfo.isLastPage}">下一页</a>
+                                </div>
                             </div>
                         </th>
                     </tr>
-                </tfoot>
-            </table>
+                    </tfoot>
+                </table>
+            </div>
 
         </div>
     </div>
@@ -163,6 +141,12 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
 
@@ -171,7 +155,8 @@
 
 
 
-    <footer class="ui inverted m-opacity-mini vertical footer segment m-padded-tb-big">
+
+    <footer class="ui inverted vertical footer segment m-padded-tb-big">
         <div class="ui center aligned container">
             <h4 class="ui inverted header m-opacity-mini">关于本站</h4>
             <p class="m-opacity-mini">这里是Shouko的个人网站</p>
@@ -190,6 +175,18 @@
         $('.ui.dropdown').dropdown({
             on: 'hover'
         });
+
+        $("#search-btn").click(function () {
+            $("[name='page']").val(0);
+            loaddata();
+        });
+        function loaddata() {
+            $("#table-container").load(/*[[@{/admin/articles/search}]]*/"/admin/articles/search",{
+                title : $("[name='title']").val(),
+                typeId : $("[name='typeId']").val(),
+                page : $("[name='page']").val()
+            });
+        }
     </script>
 </body>
 

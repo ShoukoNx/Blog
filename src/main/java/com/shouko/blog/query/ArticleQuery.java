@@ -17,6 +17,7 @@ public class ArticleQuery {
 
     private Long id;
     private String title;
+    private String description;
     private LocalDateTime updateTime;
     private boolean published;
     private boolean recommend;

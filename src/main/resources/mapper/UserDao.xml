@@ -4,7 +4,7 @@
 
     <select id="findByUsernameAndPassword" resultType="com.shouko.blog.entity.User">
         SELECT * FROM blog.t_user
-        WHERE username=#{username} AND password=#{password};
+        WHERE username=#{username} AND password=#{password}
 
     </select>
 </mapper>

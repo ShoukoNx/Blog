@@ -20,42 +20,10 @@
 <body>
 
     <!-- 隐藏菜单 -->
-    <div class="ui large top fixed hidden menu">
-        <div class="ui container">
-            <a rel="#" class="item"><i class="home icon"></i>主页</a>
-            <a rel="#" class="item"><i class="book icon"></i>文章</a>
-            <a rel="#" class="item"><i class="archive icon"></i>资源</a>
-            <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
-            <a rel="#" class="active item"><i class="info icon"></i>关于我</a>
-            <div class="right item">
-                <div class="ui icon small input">
-                    <input type="text" placeholder="搜索全站...">
-                    <i class="search link icon"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div th:replace="fragment/template :: hiddenMenu"></div>
 
     <!-- 主菜单 -->
-    <div class="ui inverted m-padded-tb-mini m-opacity-mini attached vertical top-mark center aligned segment">
-        <div class="ui container">
-            <div class="ui inverted secondary borderless pointing menu">
-                <a rel="#" class="item"><i class="home icon"></i>主页</a>
-                <a rel="#" class="item"><i class="book icon"></i>文章</a>
-                <a rel="#" class="item"><i class="archive icon"></i>资源</a>
-                <a rel="#" class="item"><i class="exclamation triangle icon"></i>整活区</a>
-                <a rel="#" class="active item"><i class="info icon"></i>关于我</a>
-                <div class="right item">
-                    <div class="ui icon small input">
-                        <input type="text" placeholder="搜索全站...">
-                        <i class="search link icon"></i>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
+    <div th:replace="fragment/template :: mainMenu" ></div>
 
     <!-- 中间内容 -->
     <div class="m-container m-opacity m-padded-tb-large">
@@ -77,14 +45,7 @@
 
 
     <!-- 底部 -->
-    <footer class="ui inverted m-opacity-mini vertical footer segment m-padded-tb-big">
-        <div class="ui center aligned container">
-            <h4 class="ui inverted header">关于本站</h4>
-            <p>这里是Shouko的个人网站</p>
-            <div class="ui inverted divider"></div>
-            <p>copyright © 2020-2021 — All Rights Reserved.</p>
-        </div>
-    </footer>
+    <footer th:replace="fragment/template :: footer"></footer>
 
 
     <!--引入semantic-ui的库-->
