@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <div th:fragment="navigator" class="ui m-padded-tb-mini segment">
+        <div class="ui container">
+            <div class="ui secondary menu">
+                <a class="h3 ui header item m-opacity-mini" th:href="@{/admin/index}">管理后台</a>
+                <a th:href="@{/admin/articles}" class="item"><i class="home icon"></i>文章管理</a>
+                <a th:href="@{/admin/types}" class="item"><i class="clone icon"></i>分类管理</a>
+                <a th:href="@{/admin/resources}" class="item"><i class="archive icon"></i>资源管理</a>
+                <div class="right m-mobile-hide menu">
+                    <div class="ui dropdown item">
+                        <div class="text">
+                            <img class="ui avatar image" th:src="${session.user.avatar}"/>
+                            <span th:text="${session.user.nickname}">123</span>
+                        </div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a>
+    </div>
+
+
+    <footer th:fragment="footer" class="ui inverted vertical footer segment m-padded-tb-big">
+        <div class="ui center aligned container">
+            <h4 class="ui inverted header">关于本站</h4>
+            <p class="">这里是Shouko的个人网站</p>
+            <div class="ui inverted divider"></div>
+            <p class="">copyright © 2020-2021 — All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

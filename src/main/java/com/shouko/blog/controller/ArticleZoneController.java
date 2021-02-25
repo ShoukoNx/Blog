@@ -53,7 +53,7 @@ public class ArticleZoneController {
         }
         model.addAttribute("types", types);
         List<FirstPageArticle> articles = articleService.getArticlesByTypeId(id);
-        PageHelper.startPage(pageNum, 5);
+        PageHelper.startPage(pageNum, 3);
         PageInfo<FirstPageArticle> pageInfo = new PageInfo<>(articles);
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("activeTypeId", id);

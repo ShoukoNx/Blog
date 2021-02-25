@@ -1,20 +1,4 @@
 spring:
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf-8
-    username: root
-    password: 12345678
+  profiles:
+    active: pro
 
-
-mybatis:
-  type-aliases-package: com.shouko.blog
-  mapper-locations: classpath:mapper/*.xml
-  configuration:
-    map-underscore-to-camel-case: true
-
-logging:
-  level:
-    root: info
-    com.shouko.blog: debug
-  file:
-    path: log/blog.log

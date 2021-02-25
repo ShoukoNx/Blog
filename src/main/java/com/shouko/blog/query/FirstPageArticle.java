@@ -24,6 +24,7 @@ public class FirstPageArticle {
     private LocalDateTime createTime;
     private Integer views;
     private String typeName;
+    private String typeColor;
     private String firstPagePic;
 
 }

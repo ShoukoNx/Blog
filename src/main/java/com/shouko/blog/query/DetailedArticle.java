@@ -31,6 +31,7 @@ public class DetailedArticle {
 
 
     private String typeName;
+    private String typeColor;
 
     private LocalDateTime updateTime;
 }

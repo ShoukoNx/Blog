@@ -25,27 +25,33 @@
             <a type="button" th:href="@{/admin/types}" id="typeList-btn" class="ui brown button" >分类列表</a>
         </div>
         <br>
-        <div class="ui container">
-            <table class="ui padded table">
-                <thead>
-                    <tr>
-                        <th>类型</th>
-                        <th>标签预览</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="type : ${types}">
-                        <td th:text="${type.name}"></td>
-                        <td th:text="${type.color}"></td>
-                        <td>
-                            <a th:href="@{/admin/types/{id}/input(id=${type.id})}" class="ui mini teal button">编辑</a>
-                            <a th:href="@{/admin/types/{id}/delete(id=${type.id})}" onclick="return confirm('确定要删除该分类吗？')"  class="ui mini red button">删除</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <br>
+        <br>
+        <br>
+        <br>
 
+        <div class="ui container">
+            <form id="type-form" th:object="${type}"  th:action="*{id}==null ? @{/admin/types} : @{/admin/types/{id}(id=*{id})}" method="post" class="ui form">
+                <input type="hidden" name="id" th:value="*{id}">
+                <div class="two fields">
+                    <div class="required field">
+                        <div class="ui left labeled input">
+                            <label class="ui white label">类型名称</label>
+                            <input type="text" name="name" th:value="*{name}" placeholder="...">
+                        </div>
+                    </div>
+                    <div class="required field">
+                        <div class="ui left labeled input">
+                            <label class="ui white label">类型颜色</label>
+                            <input type="text" name="color" th:value="*{color}" placeholder="...">
+                        </div>
+                    </div>
+                </div>
+                <div class="ui right aligned container">
+                    <button type="button" id="submit-btn" class="ui primary button">提交</button>
+                </div>
+
+            </form>
         </div>
     </div>
 
@@ -66,6 +72,11 @@
     <script>
         $('.ui.dropdown').dropdown({
             on: 'hover'
+        });
+
+        //提交
+        $('#submit-btn').click(function () {
+            $('#type-form').submit();
         });
     </script>
 </body>

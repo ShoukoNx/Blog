@@ -16,34 +16,7 @@
 <body>
 
     <!-- 导航栏 -->
-    <nav class="ui inverted m-padded-tb-mini m-opacity-mini attached vertical center aligned segment">
-        <div class="ui container">
-            <div class="ui inverted secondary borderless pointing menu">
-                <a class="h3 ui header item m-opacity-mini" th:href="@{/admin/articles}">管理后台</a>
-                <a rel="#" th:href="@{/admin/articles}" class="item"><i class="home icon"></i>文章管理</a>
-                <a rel="#" class="item"><i class="clone icon"></i>分类管理</a>
-                <a rel="#" class="item"><i class="archive icon"></i>资源管理</a>
-                <div class="right m-mobile-hide menu">
-                    <div class="ui dropdown item">
-                        <div class="text">
-                            <img class="ui avatar image" th:src="${session.user.avatar}"/>
-                            <span th:text="${session.user.nickname}">123</span>
-                        </div>
-                        <i class="dropdown icon"></i>
-                        <div class="menu">
-                            <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
-            <i class="sidebar icon"></i>
-        </a>
-    </nav>
-
-
-
+    <div th:replace="fragment/admin_template :: navigator"></div>
 
     <div class="m-container-small m-padded-tb-large">
         <div class="ui right aligned container">
@@ -61,7 +34,7 @@
 
                 <div class="required field">
                     <div class="ui left labeled input">
-                        <div class="ui selection compact teal dropdown label">
+                        <div class="ui selection compact white dropdown label">
                             <input type="hidden" value="原创" name="copyrightInfo" th:value="*{copyrightInfo}">
                             <i class="dropdown icon"></i>
                             <div class="text">原创</div>
@@ -76,7 +49,7 @@
                 </div>
                 <div class="required field">
                     <div class="ui left labeled input">
-                        <label class="ui teal label">文章描述</label>
+                        <label class="ui white label">文章描述</label>
                         <input type="text" name="description" placeholder="文章描述" th:value="*{description}"/>
                     </div>
                 </div>
@@ -90,7 +63,7 @@
                 <div class="two fields">
                     <div class="required field">
                         <div class="ui left labeled action input">
-                            <label class="ui teal label">分类</label>
+                            <label class="ui white label">分类</label>
                             <div name="type" class="ui selection compact fluid dropdown">
                                 <!--新增-->
                                 <input type="hidden" name="type.id" th:value="${article.getTypeId()}">
@@ -106,7 +79,7 @@
                     </div>
                     <div class="required field">
                         <div class="ui left labeled input">
-                            <label class="ui teal label">首页配图</label>
+                            <label class="ui white label">首页配图</label>
                             <input type="text" name="firstPagePic" th:value="*{firstPagePic}" placeholder="...">
                         </div>
                     </div>  
@@ -155,22 +128,7 @@
     <br>
     <br>
 
-
-
-
-
-
-
-
-    <footer class="ui inverted m-opacity-mini vertical footer segment m-padded-tb-big">
-        <div class="ui center aligned container">
-            <h4 class="ui inverted header m-opacity-mini">关于本站</h4>
-            <p class="m-opacity-mini">这里是Shouko的个人网站</p>
-            <div class="ui inverted divider"></div>
-            <p class="m-opacity-mini">copyright © 2020-2021 — All Rights Reserved.</p>
-        </div>
-
-    </footer>
+    <footer th:replace="fragment/admin_template :: footer"></footer>
 
 
     <!--引入semantic-ui的库-->

@@ -61,13 +61,14 @@
         <result property="avatar" column="avatar"/>
         <result property="createTime" column="create_time"/>
         <result property="views" column="views"/>
-        <result property="typeName" column="Name"/>
-        <result property="firstPagePic" column="firstPagePic"/>
+        <result property="typeName" column="name"/>
+        <result property="typeColor" column="color"/>
+        <result property="firstPagePic" column="first_page_pic"/>
     </resultMap>
     <select id="getFirstPageArticles" resultMap="firstPageArticle">
         SELECT a.id, a.title, a.description, a.create_time, a.views, a.first_page_pic,
                u.nickname, u.avatar,
-               t.name FROM blog.t_article a, blog.t_user u,blog.t_type t WHERE
+               t.name, t.color FROM blog.t_article a, blog.t_user u,blog.t_type t WHERE
                 a.user_id=u.id AND a.type_id=t.id AND a.recommend=TRUE AND a.published=TRUE ORDER BY a.update_time DESC LIMIT 3 OFFSET 0
     </select>
 
@@ -91,6 +92,7 @@
         <result property="nickname" column="nickname"/>
         <result property="avatar" column="avatar"/>
         <result property="typeName" column="name"/>
+        <result property="typeColor" column="color"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
@@ -98,7 +100,7 @@
         SELECT a.id, a.copyright_info, a.title, a.content, a.views,
                a.can_appreciate, a.appreciation, a.can_comment, a.comment_count, a.update_time,
                u.nickname, u.avatar,
-               t.name
+               t.name, t.color
         FROM blog.t_article a, blog.t_user u, blog.t_type t
         WHERE a.id=#{id} AND a.type_id=t.id AND a.user_id=u.id
     </select>
@@ -115,8 +117,6 @@
     <update id="updateViews" parameterType="com.shouko.blog.entity.Article">
         UPDATE blog.t_article a SET a.views = a.views + 1 WHERE a.id=#{id}
     </update>
-
-
 
 
     <delete id="delete">

@@ -32,15 +32,11 @@ public class TypeController {
         this.typeService = typeService;
     }
 
-    // 分页查询分类
+    // 查询分类
     @GetMapping("/types")
-    public String list(Model model, @RequestParam(defaultValue = "1",
-            value = "pageNum") Integer pageNum){
-        String order = "id desc";
-        PageHelper.startPage(pageNum, 10, order);
-        List<Type> list = typeService.getAllType();
-        PageInfo<Type> pageInfo = new PageInfo<>(list);
-        model.addAttribute("pageInfo", pageInfo);
+    public String list(Model model){
+        List<Type> types = typeService.getAllType();
+        model.addAttribute("types", types);
         return "admin/types";
     }
 
@@ -65,31 +61,26 @@ public class TypeController {
         }else{
             attributes.addFlashAttribute("message", " 新增成功");
         }
-        return "redirect:/types";
+        return "redirect:/admin/types";
     }
 
     // 返回编辑分类页面
     @GetMapping("/types/{id}/input")
     public String updateInput(@PathVariable Long id, Model model){
         model.addAttribute("type", typeService.getType(id));
-        return "redirect:admin/types-input";
+        return "admin/types-input";
     }
 
     // 更新分类
     @PostMapping("/types/{id}")
     public String updatePost(@Validated Type type, RedirectAttributes attributes){
-        Type t = typeService.getTypeByName(type.getName());
-        if(t != null){
-            attributes.addFlashAttribute("message", "该分类已存在");
-            return "redirect:/types/input";
-        }
         int n = typeService.updateType(type);
         if(n == 0){
             attributes.addFlashAttribute("message", "更新失败");
         }else{
             attributes.addFlashAttribute("message", " 更新成功");
         }
-        return "redirect:/types";
+        return "redirect:/admin/types";
     }
 
     // 删除分类
@@ -97,6 +88,6 @@ public class TypeController {
     public String delete(@PathVariable Long id, RedirectAttributes attributes){
         typeService.deleteType(id);
         attributes.addFlashAttribute("message", "删除成功");
-        return "redirect:/types/";
+        return "redirect:/admin/types";
     }
 }

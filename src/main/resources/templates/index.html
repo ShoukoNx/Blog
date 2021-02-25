@@ -24,31 +24,20 @@
 
 
     
-    <div class="animate__animated animate__fadeIn m-padded-tb-middle">
+    <div class="m-container-small animate__animated animate__fadeIn m-padded-tb-middle">
         <div class="ui container">
             <div class="ui grid">
-                <div class="five wide column">
-                    <div class="ui segment m-border-rounded-small">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                    </div>
-
-                </div>
-                <div class="eleven wide column">
-                    <div class="ui top attached segment">
+                <div class="sixteen wide column">
+                    <div class="ui basic segment m-margin-mini">
                         <div class="ui two column grid">
                             <div class="column">
-                                <h3 class="ui header"><i class="clone icon"></i>最新文章</h3>
+                                <h3 class="ui header">最新文章</h3>
                             </div>
                         </div>
                     </div>
-                    <div class="ui attached segment m-padded-lr-small" th:each="article:${firstPageArticles}">
-                        <div class="ui aligned grid">
+                    <div class="ui divider m-margin-mini"></div>
+                    <div class="ui m-border-rounded-small segment m-padded-lr-small " th:each="article:${firstPageArticles}">
+                        <div class="ui grid">
                             <div class="eleven wide column">
                                 <h3 class="ui header"><a th:href="@{/article/{id}(id=${article.id})}" th:text="${article.title}">MySQL的事务</a></h3>
                                 <p th:text="|${article.description}......|" >读未提交(Read uncommitted)，一个事务可以读取另一个未提交事务的数据，最低级别，任何情况都无法保证。</p>
@@ -56,8 +45,10 @@
                                     <div class="eleven wide column">
                                         <div class="ui horizontal link list">
                                             <div class="item">
-                                                <img src="../static/images/down.jpg" th:src="${article.avatar}" alt="" class="ui avatar image">
-                                                <div class="content" th:text="${article.nickname}">Shouko</div>
+                                                <a th:href="@{/about}">
+                                                    <img src="../static/images/down.jpg" th:src="${article.avatar}"  alt="" class="ui avatar image"/>
+                                                </a>
+                                                <span class="content" th:text="${article.nickname}">Shouko</span>
                                             </div>
                                             <div class="item" >
                                                 <i class="calendar icon"></i>
@@ -71,112 +62,22 @@
 
                                     </div>
                                     <div class="right aligned five wide column">
-                                        <a href="#" target="_blank" class="ui grey label m-text-thin m-padded-mini" th:text="${article.typeName}">数据库</a>
+                                        <a href="#" target="_blank" class="ui label m-text-thin m-padded-mini" th:text="${article.typeName}" th:style="'background:'+*{article.typeColor}+''">数据库</a>
                                     </div>
                                 </div>
-
                             </div>
-                            <div class="five wide column">
-                                <a href="#" target="_blank">
-                                    <img src="https://picsum.photos/id/1005/800/450" th:src="${article.firstPagePic}" class="ui rounded image"/>
-                                </a>
+                            <div class="right aligned five wide column">
+                                <img src="https://picsum.photos/id/1005/400/225" height="100" th:src="@{${article.firstPagePic}}" class="ui rounded image"/>
                             </div>
-
                         </div>
                     </div>
-
-                    <!--<div class="ui segments">
-                        <div class="ui segment">
-                            <div class="ui two column grid">
-                                <div class="column">
-                                    <h3 class="ui header"><i class="archive icon"></i>最新资源</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui segment">
-                            <p>该板块正在开发中...</p>
-                        </div>
-                    </div>-->
                 </div>
-
-
-                <!--<div class="four wide column m-mobile-hide">
-                    <div class="ui segments">
-                        <div class="ui segment">
-                            <div class="ui column grid">
-                                <div class="column">
-                                    <h3 class="ui header"><i class="envelope outline icon"></i>公告</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui segment">
-                            <p>本站正在开发中......</p>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-
-                    <div class="ui segments">
-                        <div class="ui segment">
-                            <div class="ui column grid">
-                                <div class="column">
-                                    <h3 class="ui header"><i class="tags icon"></i>热门分类</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui segment">
-                            <a href="#" target="_blank" class="ui pink label m-text-thin m-padded-mini m-margin-mini">数据库</a>
-                            <a href="#" target="_blank" class="ui teal label m-text-thin m-padded-mini m-margin-mini">Python</a>
-                            <a href="#" target="_blank" class="ui yellow label m-text-thin m-padded-mini m-margin-mini">Java</a>
-                            <a href="#" target="_blank" class="ui green label m-text-thin m-padded-mini m-margin-mini">Spring</a>
-                            <a href="#" target="_blank" class="ui blue label m-text-thin m-padded-mini m-margin-mini">数据结构与算法</a>
-                            <a href="#" target="_blank" class="ui orange label m-text-thin m-padded-mini m-margin-mini">JVM</a>
-                            <a href="#" target="_blank" class="ui purple label m-text-thin m-padded-mini m-margin-mini">科研</a>
-                            <a href="#" target="_blank" class="ui olive label m-text-thin m-padded-mini m-margin-mini">杂谈</a>
-                        </div>
-                    </div>
-
-                    <div class="ui segments">
-                        <div class="ui segment">
-                            <div class="ui column grid">
-                                <div class="column">
-                                    <h3 class="ui header"><i class="info circle icon"></i>站点信息</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ui segment">
-                            <p>本站已经正式上线<span style="color: #ff328e">1</span>天</p>
-                            <p>您是本站第1位访客</p>
-                        </div>
-                    </div>
-
-                </div>-->
             </div>
         </div> 
     </div>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+
 
     <footer th:replace="fragment/template :: footer"></footer>
 
@@ -186,8 +87,7 @@
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
     <!-- 实现菜单栏淡入淡出 -->
     <script>
-        $('.top-mark')
-            .visibility({
+        $('.top-mark').visibility({
               once: false,
               onBottomPassed: function() {
                 $('.moving').transition('fade in');
